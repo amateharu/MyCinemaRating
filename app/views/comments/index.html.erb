@@ -1,0 +1,15 @@
+<div class='container'>
+  <h1>Comments</h1>
+
+  <ul class="list-group">
+    <% @comments.each do |comment| %>
+      <li class="list-group-item">
+        <%= link_to comment.id, comment %> -
+        <%= comment.body %>
+      </li>
+    <% end %>
+  </ul>
+  <br>
+  <%= link_to 'New Comment', new_comment_path, class: 'btn btn-primary' %>
+</div>
+
