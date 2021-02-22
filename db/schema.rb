@@ -69,5 +69,4 @@ ActiveRecord::Schema.define(version: 2021_02_22_054820) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
   end
-
 end
