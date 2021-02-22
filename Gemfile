@@ -16,6 +16,7 @@ end
 
 # Bootstrap
 gem 'bootstrap', '~> 5.0.0.beta1'
+gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'jquery-rails'
 
 # Devise
