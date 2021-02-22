@@ -15,17 +15,6 @@ ActiveRecord::Schema.define(version: 2021_02_11_101605) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "films", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "image"
-    t.string "director"
-    t.text "actors"
-    t.integer "imdb_rating"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "published", default: false
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -57,6 +46,19 @@ ActiveRecord::Schema.define(version: 2021_02_11_101605) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "film_id"
+  end
+
+  create_table "films", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "image"
+    t.string "director"
+    t.text "actors"
+    t.integer "imdb_rating"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "published", default: false
   end
 
 end
