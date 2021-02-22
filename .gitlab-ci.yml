@@ -4,15 +4,18 @@ services:
 variables:
   POSTGRES_DB: my_cinema_rating_test
   DATABASE_USERNAME: runner
-  DATABASE_PASSWORD: ""
+  DATABASE_PASSWORD: postgres
   POSTGRES_HOST_AUTH_METHOD: trust
   DATABASE_HOST: postgres
+  POSTGRES_HOST: postgres
+
 before_script:
   - apt-get update -qq && apt-get install -y -qq postgresql postgresql-contrib postgresql-client libpq-dev cmake libv8-dev nodejs
   - ruby -v
   - which ruby
   - gem install bundler --no-document
   - RAILS_ENV=test bundle install --jobs $(nproc) "${FLAGS[@]}"
+  - PGPASSWORD=${DATABASE_PASSWORD} psql -h ${POSTGRES_HOST} -U ${DATABASE_USERNAME} -d ${POSTGRES_DB} -c "SELECT 'OK' AS status;"
   - RAILS_ENV=test bundle exec rake db:create db:schema:load
 rspec:
   script:

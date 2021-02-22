@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'comments#index'
   resources :comments
+  resources :films
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
