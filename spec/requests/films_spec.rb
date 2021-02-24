@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Films', type: :request do
   let(:film) { Film.create(title: 'Gladiator') }
-
+  
   it 'it renders index page' do
     get '/films/'
     expect(response).to be_successful
