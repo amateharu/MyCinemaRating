@@ -1,9 +1,8 @@
-require 'uri'
-
 # Creates, show, update and delete articles
 class FilmsController < ApplicationController
   before_action :find_film, only: %i[show update edit destroy]
   before_action :film_attributes, only: %i[show]
+  before_action :average_rating, only: %i[show]
 
   def new
     @film = Film.new
@@ -22,7 +21,9 @@ class FilmsController < ApplicationController
     @films = Film.all
   end
 
-  def show; end
+  def show
+    @rating = Rating.new(film_id: @film.id)
+  end
 
   def edit; end
 
