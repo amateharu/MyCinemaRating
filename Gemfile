@@ -7,10 +7,11 @@ ruby '2.6.4'
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.2'
 end
-
+gem 'faker',                '1.4.2'
 # dotenv
 gem 'dotenv-rails', groups: [:development, :test]
-
+gem 'will_paginate', '~> 3.3'
+gem 'bootstrap-will_paginate', '~> 1.0'
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'jquery-rails'
