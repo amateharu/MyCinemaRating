@@ -1,0 +1,12 @@
+<div class='container'>
+  <h1>Comment</h1>
+
+  <h3>Id: <%= @comment.id %></h3>
+  <h3>Body: <%= @comment.body %></h3>
+
+  <%= link_to 'Delete', comment_path(@comment), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-primary' %>
+  <%= link_to 'Edit', edit_comment_path(@comment), class: 'btn btn-primary' %>
+  <br>
+  <br>
+  <%= link_to 'Comments', comments_path, class: 'btn btn-info' %>
+</div>

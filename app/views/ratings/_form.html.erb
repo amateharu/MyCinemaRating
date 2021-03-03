@@ -1,0 +1,18 @@
+<div class='field'> 
+  <%= form_with(model: [@film, @rating], local: true) do |f| %>
+    <div class="field">
+      <div class="star-rating" data-score= <%= @average_rating %> ></div>
+  <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+<script>
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: false,
+    scoreName: 'rating[user_rating]',
+    score: function() {
+          return $(this).attr('data-score');       
+  }
+  });
+</script>

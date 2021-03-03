@@ -1,0 +1,19 @@
+<div>
+  <h1><%= @film.title %></h1>
+</div>
+<div>
+  <%= @film.description %>
+</div>
+<div>
+  <%= @film.imdb_rating %>
+</div>
+<div>
+  <%= @film.director %>
+</div>
+<div>
+<%= @film.actors %>
+</div>
+
+<%= image_tag "#{@film.image}" %>
+
+<%= render 'ratings/form' %>

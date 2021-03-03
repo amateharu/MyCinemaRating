@@ -1,6 +1,7 @@
-# frozen_string_literal: true
-
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-  include SessionsHelper
+  helper_method :average_rating
+
+  def average_rating
+    @average_rating = @film.ratings.sum(:user_rating).to_f / @film.ratings.size
+  end
 end
