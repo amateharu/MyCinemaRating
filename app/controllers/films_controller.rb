@@ -18,7 +18,8 @@ class FilmsController < ApplicationController
   end
 
   def index
-    @films = Film.all
+    @q ||= Film.ransack(params[:q])
+    @films = @q.result(distinct: true)
   end
 
   def show
