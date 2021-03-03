@@ -6,22 +6,17 @@ ruby '2.6.4'
 # Run against the latest stable release
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.2'
-  # Adds controller testing
-  gem 'rails-controller-testing'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # dotenv
-  gem 'dotenv-rails'
 end
-
+gem 'faker',                '1.4.2'
+# dotenv
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'will_paginate', '~> 3.3'
+gem 'bootstrap-will_paginate', '~> 1.0'
 # Bootstrap
-gem 'bootstrap', '~> 5.0.0.beta1'
-gem 'bootstrap-sass', '~> 3.2.0.2'
+gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'jquery-rails'
 
-# Devise
-gem 'devise'
-
+gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 # Active Admin
 gem 'activeadmin'
 

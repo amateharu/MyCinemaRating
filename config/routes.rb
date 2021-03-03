@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  root 'comments#index'
-  resources :comments
-  resources :films
+  get 'sessions/new'
+  root             'static_pages#home'
+  get 'about'   => 'static_pages#about'
+  get 'signup'  => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+  resources :users
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :films do
-    resources :ratings, only: %i[new create update]
-  end
 end
