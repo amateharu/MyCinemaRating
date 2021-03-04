@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 # Creates new and update for rating
 class RatingsController < ApplicationController
   before_action :find_film
   before_action :find_rating, only: %i[update]
 
   def new
-    @rating = Rating.new
+    @rating = @film.ratings.new
   end
 
   def create

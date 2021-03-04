@@ -1,11 +1,14 @@
-<div class='container'><br>
-  <%= form_with(model: @film, local: true) do |f| %>
-    <div class="form-group">
-      <%= f.label :title %>
-      <%= f.text_field :title, placeholder: 'Title' %>
+<div class='card'><br>
+  <div class='card-header' id='card-bg'>
+    <div class='form-group'>
+      <%= form_with(model: @film, local: true) do |f| %>
+        <div class="form-group">
+          <%= f.text_field :title, placeholder: 'Title', class: 'form-control', required: true %>
+        </div>
+        <div class="form-group"><br>
+          <%= f.submit class: 'btn btn-warning' %>
+        </div>
+      <% end %>
     </div>
-    <div class="form-group"><br>
-      <%= f.submit class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+  </div>
 </div>

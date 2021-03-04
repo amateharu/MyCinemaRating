@@ -8,3 +8,4 @@ class ImdbService
     JSON.parse(response)
   end
 end
+

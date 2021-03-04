@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 # Creates, show, update and delete articles
 class FilmsController < ApplicationController
   before_action :find_film, only: %i[show update edit destroy]
-  before_action :film_attributes, only: %i[show]
+  before_action :default_attributes, only: %i[show]
   before_action :average_rating, only: %i[show]
+  before_action :check_rating?, only: [:show]
 
   def new
     @film = Film.new
@@ -19,12 +22,10 @@ class FilmsController < ApplicationController
 
   def index
     @q ||= Film.ransack(params[:q])
-    @films = @q.result(distinct: true)
+    @films = @q.result(distinct: true).where(published: true).paginate(page: params[:page], per_page: 8).order('id DESC')
   end
 
-  def show
-    @rating = Rating.new(film_id: @film.id)
-  end
+  def show; end
 
   def edit; end
 
@@ -51,12 +52,21 @@ class FilmsController < ApplicationController
     @film = Film.find(params[:id])
   end
 
-  def film_attributes
-    @film.description = ImdbService.response(CGI.escape(@film.title))['Plot']
-    @film.image = ImdbService.response(CGI.escape(@film.title))['Poster']
-    @film.director = ImdbService.response(CGI.escape(@film.title))['Director']
-    @film.actors = ImdbService.response(CGI.escape(@film.title))['Actors']
-    @film.imdb_rating = ImdbService.response(CGI.escape(@film.title))['imdbRating']
-    @film.save
+  # fetching default attributes for film
+  def default_attributes
+    service = ImdbService.response(CGI.escape(@film.title))
+
+    @img = @film.image
+    @imdb = service['imdbRating'] || ''
+    @votes = ImdbService.response(CGI.escape(@film.title))['imdbVotes'] || ''
+    @year = service['Year'] || 'N/A'
+    @runtime = service['Runtime'] || 'N/A'
+    @genre = service['Genre'] || 'N/A'
+    @director = service['Director'] || 'N/A'
+    @actors = service['Actors'] || 'N/A'
+    @country = service['Country'] || ''
+    @box_office = service['BoxOffice'] || ''
+    @awards = service['Awards'] || ''
+    @description = service['Plot'] || ''
   end
 end

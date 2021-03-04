@@ -13,9 +13,11 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'will_paginate', '~> 3.3'
 gem 'bootstrap-will_paginate', '~> 1.0'
 # Bootstrap
+gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'jquery-rails'
-
+# Devise
+gem 'devise'
 gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 # Active Admin
 gem 'activeadmin'
@@ -76,13 +78,10 @@ group :test do
   gem 'chromedriver-helper'
   # Adds stubbing of external services in tests
   gem "webmock"
-  # Adds association test
-  gem 'shoulda-matchers', '~> 4.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
+gem 'will_paginate', '~> 3.1.0'
 # Adds sorting and searching
 gem 'ransack'
-

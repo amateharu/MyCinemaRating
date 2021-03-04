@@ -10,16 +10,15 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment = Comment.new
+    @film = Film.find(params[:film_id])
   end
 
   def create
-    @comment = Comment.new(comment_params)
-    if @comment.valid?
-      @comment.save
-
+    @film = Film.find(params[:film_id])
+    @comment = @film.comments.new(comment_params)
+    if @comment.save
       flash[:success] = 'Comment has been created!'
-      redirect_to @comment
+      redirect_to film_path(@film)
     else
       flash[:danger] = 'Something went wrong.'
       render :new
@@ -51,6 +50,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, ratings_attributes: Rating.attribute_names.map(&:to_sym))
   end
 end
