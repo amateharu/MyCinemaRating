@@ -3,17 +3,35 @@
   <%= f.search_field :title_cont %>
   <%= f.submit %>
 <% end %>
-
 <%= sort_link(@q, :imdb_rating, 'IMDB Rating') %>
-  <div class='container'>
+  <div class='row'>
     <% @films.each do |film| %>
-      <div class="card mb-3">
-        <%= image_tag "#{film.image}", class: "card-img-top" %>
-      <div class="card-body">
-        <h5 class="card-title"><%= link_to film.title, film_path(film) %></h5>
-        <p class="card-text"><%= truncate(film.description, length: 100 ) %></p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <div class='col-sm-3 mb-2'>
+        <div class="card" id='hover'>
+          <%= link_to (image_tag check_image(film.image), style: "max-height: 340px", class: "card-img-top"), film_path(film) %>
+          <div class="card-body" style='height: 175px;'>
+            <h5 class="card-title"><%= film.title %></h5>
+            IMDb:<div class="rating" data-score=<%= film.imdb_stars(film.imdb_rating) %>></div>
+            <%= link_to 'delete', film_path(film), method: :delete %>
+          </div>
+        </div>
       </div>
-    </div>
     <% end %>
+    <div class='flickr_pagination'>
+      <%= will_paginate @films %>  
+    </div>
   </div>
+<% end %>
+<div class='footer'>
+  
+</div>
+
+<script>
+  $('.rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+          return $(this).attr('data-score');       
+  }
+  });
+</script>

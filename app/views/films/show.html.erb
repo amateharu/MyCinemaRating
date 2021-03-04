@@ -1,19 +1,142 @@
-<div>
-  <h1><%= @film.title %></h1>
-</div>
-<div>
-  <%= @film.description %>
-</div>
-<div>
-  <%= @film.imdb_rating %>
-</div>
-<div>
-  <%= @film.director %>
-</div>
-<div>
-<%= @film.actors %>
+<div class='card'>
+  <div class='card-body' id='card-bg' >
+    <div class='container'>
+      <div class='row'>
+        <div class="col-xl-4">
+          <%= image_tag @film.image %>
+          
+          <%= check_rating(@film.ratings) %>  
+        </div>
+        <div class="col-xl-8">
+          <div class="row">
+            <div class="col-sm-4">
+              <div>
+                <strong>Title:</strong>
+              </div>
+              <br>
+              <div>
+                <strong>IMDb Rating: <%= @imdb %></strong>
+              </div>
+              <br>
+              <br>
+              <div>
+                <strong>Year:</strong>
+              </div>
+              <br>
+              <div>
+                <strong>Runtime:</strong>
+              </div>
+              <br>
+              <div>
+                <strong>Genre:</strong>
+              </div>
+              <br>
+              <div>
+                <strong>Director:</strong>
+              </div>
+              <br>
+              <div>
+                <strong>Actors:</strong>
+              </div>
+              <br>
+              <br>
+              <div>
+                <strong>Country:</strong>
+              </div>
+              <br>
+              <div>
+                <strong>Gross USA:</strong>
+              </div>
+              <br>
+              <div>
+                <strong>Awards:</strong>
+              </div>
+              <br>
+              <br>
+              <div>
+                <strong>Description:</strong>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div>
+                <strong><%= @film.title %></strong>
+              </div>
+              <br>
+              <div>
+                <div class="imdb_rating" data-score=<%= @film.imdb_stars(@film.imdb_rating) %>></div>
+                <%= @votes %> votes
+              </div>
+              <br>
+              <div>
+                <strong><%= @year %></strong>
+              </div>
+              <br>
+              <div>
+                <strong><%= @runtime %></strong>
+              </div>
+              <br>
+              <div>
+                <strong><%= @genre %></strong>
+              </div>
+              <br>
+              <div>
+                <strong><%= @film.director %></strong>
+              </div>
+              <br>
+              <div>
+                <strong><%= @film.actors %></strong>
+              </div>
+              <br>
+              <div>
+                <strong><%= @country %></strong>
+              </div>
+              <br>
+              <div>
+                <strong><%= @box_office %></strong>
+              </div>
+              <br>
+              <div>
+                <strong><%= @awards %></strong>
+              </div>
+              <br>
+              <div>
+                <%= @film.description %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% if @rating %>
+        <%= render 'ratings/form' %>
+      <% end %>
+      <a href='https://www.freepik.com/vectors/background' id='bg-ancor'>Background-www.freepik.com</a>
+    </div>
+    <div>
+      <%= render 'comments/form' %>
+    </div>
+  </div>
+  <div class="card-footer">
+    <% @film.comments.each do |comment| %>
+      <p><%= comment.body %></p>
+    <% end %>
+  </div>
 </div>
 
-<%= image_tag "#{@film.image}" %>
 
-<%= render 'ratings/form' %>
+<script>
+  $('.imdb_rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+          return $(this).attr('data-score');       
+  }
+  });
+
+  $('.user-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+          return $(this).attr('score');       
+  }
+  });
+</script>

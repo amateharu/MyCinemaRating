@@ -1,8 +1,8 @@
 <div class='field'> 
-  <%= form_with(model: [@film, @rating], local: true) do |f| %>
+  <%= form_with(model: [@film, @film.ratings.build], local: true) do |f| %>
     <div class="field">
       <div class="star-rating" data-score= <%= @average_rating %> ></div>
-  <%= f.submit class: 'btn btn-primary' %>
+    <%= f.submit class: 'btn btn-primary' %>
   <% end %>
 </div>
 

@@ -1,0 +1,29 @@
+
+<div class='card'>
+  <div class='body' id='card-bg'>
+    <div class="form-group">
+      <%= form_with model: [@film, @film.comments.build] do |form| %>
+        
+        <% if @film.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@film.errors.count, "error") %> prohibited this comment from being saved:</h2>
+        
+            <ul>
+            <% @film.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        
+        <div>
+          <%= form.text_area :body, placeholder: 'Wright a review', class: "form-control", required: true %>
+        </div>
+        <br>
+        <div>
+          <%= form.submit 'Create review', class: "btn btn-warning", method: 'get', remote: true %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
