@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include SessionsHelper
+  before_action :set_search
   before_action :logged_in_user, only: [:index, :edit, :update]
   before_action :correct_user,   only: [:edit, :update]
 

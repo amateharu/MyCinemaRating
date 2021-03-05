@@ -2,7 +2,7 @@
 
 # module helper
 module FilmsHelper
-  # check image for presence if nil returns default image
+  # check image for presence, if nil returns default image
   def check_image(img)
     return ENV['DEFAULT_IMAGE'] if img.nil?
 
