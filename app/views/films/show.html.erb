@@ -1,11 +1,12 @@
 <div class='card'>
-  <div class='card-body' id='card-bg' >
+  <div class='card-body' id='card-bg'>
     <div class='container'>
       <div class='row'>
         <div class="col-xl-4">
           <%= image_tag @film.image %>
           
-          <%= check_rating(@film.ratings) %>  
+          <%= check_rating(@film.ratings) %>
+          votes:<%= @film.ratings.size %>  
         </div>
         <div class="col-xl-8">
           <div class="row">
@@ -112,12 +113,23 @@
       <a href='https://www.freepik.com/vectors/background' id='bg-ancor'>Background-www.freepik.com</a>
     </div>
     <div>
-      <%= render 'comments/form' %>
+      <% if current_user?(current_user) %>
+        <%= render 'comments/form' %>
+      <% else %>
+        <p>You must logged in to leave the comments.</p>
+      <% end %>
     </div>
   </div>
   <div class="card-footer">
-    <% @film.comments.each do |comment| %>
-      <p><%= comment.body %></p>
+    <% unless @film.comments.empty?  %>
+      <% @film.comments.each do |comment| %>
+        <%#= current_user.name %><br>
+        <%= comment.body %><br>
+        <small class='time'><%= show_time(comment.created_at) %></small>
+        <p></p>
+      <% end %>
+    <% else %>
+      <p>There are no comments yet.</p>
     <% end %>
   </div>
 </div>

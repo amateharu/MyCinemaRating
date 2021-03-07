@@ -13,6 +13,20 @@
  */
  @import "bootstrap";
  
+ small.time {
+   font-size: 10px;
+   color: #adadad;
+ }
+
+#header-bg {
+  background: url('/assets/bg-card') 0 0/100% auto no-repeat fixed;
+}
+
+ #card-profile {
+   background: url('/assets/2') 0 0 no-repeat fixed;
+   color:rgb(255, 255, 255)
+ }
+
  .center.jumbotron {
     background: url('/assets/2') 0 0 no-repeat fixed;
     color:rgb(255, 202, 9)
@@ -36,8 +50,8 @@ body {
 }
 
 #card-bg {
-  background: url('/assets/2') 0 0/100%auto no-repeat fixed;
-
+  background: url('/assets/2') 0 0 no-repeat fixed;
+  color:rgb(214, 255, 253);
 }
 
 #bg-ancor {
