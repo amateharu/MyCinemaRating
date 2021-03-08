@@ -2,7 +2,7 @@
 
 # module helper
 module FilmsHelper
-  # check image for presence if nil returns default image
+  # check image for presence, if nil returns default image
   def check_image(img)
     return ENV['DEFAULT_IMAGE'] if img.nil?
 
@@ -18,9 +18,15 @@ module FilmsHelper
     if rating.empty?
       content_tag :p
     else
-      content_tag :div, class: 'user-rating', score: rating.last.user_rating do
-        content_tag :strong, 'User Rating:'
+      content_tag :div, class: 'user-rating', score: @average_rating do
+        content_tag :strong, 'My Cinema Rating: '
       end
     end
+  end
+
+  # returns time without seconds
+  def show_time(time)
+    new_time = time.to_s
+    /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}/.match(new_time)
   end
 end

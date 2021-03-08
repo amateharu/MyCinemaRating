@@ -2,6 +2,7 @@
 
 # Creates new and update for rating
 class RatingsController < ApplicationController
+  include SessionsHelper
   before_action :find_film
   before_action :find_rating, only: %i[update]
 
@@ -12,6 +13,7 @@ class RatingsController < ApplicationController
   def create
     @rating = Rating.new(rating_params)
     @rating.film_id = @film.id
+    @rating.user_id = current_user.id
 
     if @rating.save
       redirect_to @film

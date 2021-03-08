@@ -2,6 +2,7 @@
 
 # Film model
 class Film < ApplicationRecord
+  belongs_to :user
   has_many :ratings, dependent: :destroy
   has_many :comments, -> { order(created_at: :desc) }, dependent: :destroy
   validates :title, presence: true,
@@ -22,7 +23,7 @@ class Film < ApplicationRecord
   private
 
   def film_data_for_nil_response
-    self.title = '-'
+    self.title = '---'
     self.description = 'N/A'
     # default image name 'movies-app'. Put your name here.
     self.image = ENV['DEFAULT_IMAGE']

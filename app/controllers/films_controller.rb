@@ -2,17 +2,19 @@
 
 # Creates, show, update and delete articles
 class FilmsController < ApplicationController
+  include SessionsHelper
   before_action :find_film, only: %i[show update edit destroy]
   before_action :default_attributes, only: %i[show]
   before_action :average_rating, only: %i[show]
   before_action :check_rating?, only: [:show]
+  before_action :set_search
 
   def new
-    @film = Film.new
+    @film = current_user.films.new
   end
 
   def create
-    @film = Film.new(film_params)
+    @film = current_user.films.new(film_params)
     if @film.save
       redirect_to @film
     else
