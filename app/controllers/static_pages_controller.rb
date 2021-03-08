@@ -1,8 +1,6 @@
 class StaticPagesController < ApplicationController
-  def home
-
-  end
-  def about
-
-  end
+  before_action :set_search
+  
+  def home; end
+  def about; end
 end

@@ -12,16 +12,46 @@
  *
  */
  @import "bootstrap";
- @import "bootstrap-sprockets";
-<<<<<<< app/assets/stylesheets/application.scss
+ 
+ small.time {
+   font-size: 10px;
+   color: #adadad;
+ }
+
+#header-bg {
+  background: url('/assets/bg-card') 0 0/100% auto no-repeat fixed;
+}
+
+ #card-profile {
+   background: url('/assets/2') 0 0 no-repeat fixed;
+   color:rgb(255, 255, 255)
+ }
+
+ .center.jumbotron {
+    background: url('/assets/2') 0 0 no-repeat fixed;
+    color:rgb(255, 202, 9)
+ }
+
+a#logo {
+  background-color: #3b7ec1;
+  border-radius: 5px;
+  color:#fff;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-color:rgb(239, 192, 49)
+}
+
+a#logo:hover {
+  background-color: #f1c235;
+}
 
 body {
   background: url('/assets/my-bg-2') 0 0/100%auto no-repeat fixed;
 }
 
 #card-bg {
-  background: url('/assets/2') 0 0/100%auto no-repeat fixed;
-
+  background: url('/assets/2') 0 0 no-repeat fixed;
+  color:rgb(214, 255, 253);
 }
 
 #bg-ancor {
