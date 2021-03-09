@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<%= render 'films/films', films: @user.films.paginate(page: params[:page], per_page: 8).order('id DESC')%>
+<%= render 'films/films', films: @q.result(distinct: true).where(published: true, user_id: @user.id).paginate(page: params[:page], per_page: 8).order('id DESC') %>
 
 
 

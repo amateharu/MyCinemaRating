@@ -15,4 +15,6 @@
   <% end %>
 </div>
 
-<%= render 'films/films', films: Film.all.where(published: true).paginate(page: params[:page], per_page: 4).order('id DESC') %>
+<%= render 'films/films', films: @q.result(distinct: true).where(published: true).paginate(page: params[:page], per_page: 4).order('id DESC') %>
+
+<%# Film.all.where(published: true).paginate(page: params[:page], per_page: 4).order('id DESC')  %>
