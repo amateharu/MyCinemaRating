@@ -4,7 +4,6 @@
 class RatingsController < ApplicationController
   include SessionsHelper
   before_action :find_film
-  before_action :find_rating, only: %i[update]
 
   def new
     @rating = @film.ratings.new
@@ -22,24 +21,10 @@ class RatingsController < ApplicationController
     end
   end
 
-  def edit; end
-
-  def update
-    if @rating.update
-      redirect_to @film
-    else
-      render 'edit'
-    end
-  end
-
   private
 
   def rating_params
     params.require(:rating).permit(:user_rating)
-  end
-
-  def find_rating
-    @rating = Rating.find(params[:id])
   end
 
   def find_film

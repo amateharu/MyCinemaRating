@@ -21,5 +21,4 @@ class ApplicationController < ActionController::Base
   def set_search
     @q = Film.search(params[:q])
   end
-
 end

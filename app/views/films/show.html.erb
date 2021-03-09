@@ -120,19 +120,6 @@
       <% end %>
     </div>
   </div>
-<<<<<<< HEAD
-  <div class="card-footer">
-    <% unless @film.comments.empty?  %>
-      <% @film.comments.each do |comment| %>
-        <%#= current_user.name %><br>
-        <%= comment.body %><br>
-        <small class='time'><%= show_time(comment.created_at) %></small>
-        <p></p>
-      <% end %>
-    <% else %>
-      <p>There are no comments yet.</p>
-    <% end %>
-=======
   <div class='card-body'>
     <div class="card-footer">
       <% unless @film.comments.empty?  %>
@@ -146,10 +133,8 @@
         <p>There are no comments yet.</p>
       <% end %>
     </div>
->>>>>>> origin/FLMPRT-15
   </div>
 </div>
-
 
 <script>
   $('.imdb_rating').raty({
