@@ -24,9 +24,10 @@ module FilmsHelper
     end
   end
 
-  # returns time without seconds
+  # returns local time without seconds
   def show_time(time)
-    new_time = time.to_s
-    /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}/.match(new_time)
+    Time.zone = 'Kyiv'
+    local_time = Time.zone.parse(time.to_s)
+    /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}/.match(local_time.to_s)
   end
 end
