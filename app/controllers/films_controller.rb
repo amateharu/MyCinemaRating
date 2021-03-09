@@ -6,7 +6,8 @@ class FilmsController < ApplicationController
   before_action :find_film, only: %i[show update edit destroy]
   before_action :default_attributes, only: %i[show]
   before_action :average_rating, only: %i[show]
-  before_action :check_rating?, only: [:show]
+  before_action :require_user, only: %i[show]
+  before_action :check_rating?, only: %i[show]
   before_action :set_search
 
   def new
