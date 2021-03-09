@@ -124,7 +124,7 @@
     <div class="card-footer" id='comments'>
       <% unless @film.comments.empty?  %>
         <% @film.comments.each do |comment| %>
-          <%#= current_user.name %><br>
+          <%= comment.username %><br>
           <%= comment.body %><br>
           <small class='time'><%= show_time(comment.created_at) %></small>
           <p></p>

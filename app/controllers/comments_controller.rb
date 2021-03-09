@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
+  include SessionsHelper
   def index
     @comments = Comment.all
   end
@@ -11,11 +12,14 @@ class CommentsController < ApplicationController
 
   def new
     @film = Film.find(params[:film_id])
+    @comment = @film.comments.new
   end
 
   def create
     @film = Film.find(params[:film_id])
     @comment = @film.comments.new(comment_params)
+    @comment.user_id = current_user.id
+    @comment.username = current_user.name
     if @comment.save
       flash[:success] = 'Comment has been created!'
       redirect_to film_path(@film)
@@ -50,6 +54,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, ratings_attributes: Rating.attribute_names.map(&:to_sym))
+    params.require(:comment).permit(:body)
   end
 end
