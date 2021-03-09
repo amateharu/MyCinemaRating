@@ -14,7 +14,7 @@ gem 'will_paginate', '~> 3.3'
 gem 'bootstrap-will_paginate', '~> 1.0'
 # Bootstrap
 gem 'bootstrap', '~> 5.0.0.beta1'
-gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+# gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'jquery-rails'
 # Devise
 gem 'devise'

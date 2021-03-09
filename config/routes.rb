@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   end
 
   resources :films do
-    resources :ratings, only: %i[new create update]
+    resources :ratings, only: %i[new create]
   end
 end

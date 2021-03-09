@@ -14,3 +14,5 @@
     </h2>
   <% end %>
 </div>
+
+<%= render 'films/films', films: Film.all.where(published: true).paginate(page: params[:page], per_page: 4).order('id DESC') %>

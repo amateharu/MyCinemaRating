@@ -21,5 +21,12 @@ class ApplicationController < ActionController::Base
   def set_search
     @q = Film.search(params[:q])
   end
-
+  
+  # checks if user logged in
+  def require_user
+    if !logged_in?
+      flash[:danger] = 'Only logged in users can do that. Please, log in or sign up'
+      redirect_to login_url
+    end
+  end
 end

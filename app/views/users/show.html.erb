@@ -16,4 +16,8 @@
   </div>
 </div>
 
+<%= render 'films/films', films: @user.films.paginate(page: params[:page], per_page: 8).order('id DESC')%>
+
+
+
 
